@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  nvidia_sdkmanager:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    privileged: true                 # 모든 장치 접근 (USB 포함)
+    container_name: nvidia_sdkmanager
+    network_mode: "host"             # 모든 포트 열림
+    environment:
+      - DISPLAY=${DISPLAY}           # GUI 출력
+      - QT_X11_NO_MITSHM=1 
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /dev:/dev
+    stdin_open: true                 # -it 옵션
+    tty: true                        # -it 옵션
