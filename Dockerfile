@@ -15,7 +15,6 @@ RUN mkdir /home/user
 RUN groupadd -g 999 user
 RUN useradd -r -u 999 -g user user
 RUN chown -R user:user /home/user
-
 USER user
 
 
